@@ -1,4 +1,4 @@
-# 34960-Proyecto_IoT_Create-LoadTables
+# 34960-Proyecto_IoT
 
 El repositorio dispone de 3 scripts:
 
@@ -7,3 +7,5 @@ El repositorio dispone de 3 scripts:
 - 34960_Rodriguez_Proyecto_IoT_Insert_Data_To_Tables.sql -> realiza carga de datos utilizando esquema y tablas creadas.
 
 - 34960_Rodriguez_Proyecto_IoT_Views -> realiza creación de vistas
+
+-34960_Rodriguez_Proyecto_IoT_Functions -> crea funciones
