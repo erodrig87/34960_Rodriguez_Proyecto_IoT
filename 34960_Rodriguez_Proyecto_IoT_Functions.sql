@@ -2,12 +2,13 @@ use proyecto_iot;
 
 -- Funcion que verifica estado de calibración
 -- Recibe parameto fecha e intervalo caliobracion (en dias), Retorna texto segun resultado
-DROP FUNCTION IF EXISTS fn_check_calibration_status;
+DROP FUNCTION IF EXISTS check_calibration_status;
 
 DELIMITER ||
 CREATE FUNCTION  check_calibration_status (calibration_date DATE, interval_calibration varchar(3))  
    RETURNS VARCHAR(10)   
-    DETERMINISTIC    
+    DETERMINISTIC 
+    CONTAINS SQL
      BEGIN
        DECLARE estado VARCHAR(10);        
          IF calibration_date> DATE_ADD(now(), INTERVAL -interval_calibration DAY)        
@@ -21,12 +22,13 @@ CREATE FUNCTION  check_calibration_status (calibration_date DATE, interval_calib
 -- Funcion que verifica estado de calibración
 -- Recibe parameto fecha e intervalo caliobracion (en dias), Retorna texto segun resultado
 
-DROP FUNCTION IF EXISTS contar_sensores;
+DROP FUNCTION IF EXISTS contar_sensores_tipo;
 
 DELIMITER //
 CREATE FUNCTION contar_sensores_tipo(tipo VARCHAR(30))
   RETURNS INT UNSIGNED
-  DETERMINISTIC
+  DETERMINISTIC 
+  READS SQL DATA
 	BEGIN
 	  DECLARE total_sensores INT UNSIGNED;
 	  SET total_sensores = (
